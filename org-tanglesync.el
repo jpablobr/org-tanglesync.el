@@ -193,7 +193,7 @@ Only takes effect when :custom is set"
       (setq cut-beg (point))
       (search-forward "#+END_SRC")
       (goto-char (- (line-beginning-position) 1))
-      (setq cut-end (point))
+      (setq cut-end (+ (point) 1))
       ;; cut out the old text
       (delete-region cut-beg cut-end)
       ;; insert the new text
