@@ -89,8 +89,7 @@ Only takes effect when :custom is set"
   org-tanglesync-minor-mode-map
   (if org-tanglesync-mode
       (progn
-        (add-hook 'org-src-mode-hook #'org-tanglesync-user-edit-buffer)
-        (message "Use C-c M-i to interactively process the buffer."))
+        (add-hook 'org-src-mode-hook #'org-tanglesync-user-edit-buffer))
     (remove-hook 'org-src-mode-hook #'org-tanglesync-user-edit-buffer)))
 
 (defun org-tanglesync-get-blockbody-buffer (block-info)
