@@ -173,8 +173,7 @@ Only takes effect when :custom is set"
 (defun org-tanglesync-perform-overwrite (internal external org-buffer &optional pos)
   "Overwrites the current code block INTERNAL with EXTERNAL change in the ORG-BUFFER at optional position POS."
   (ignore internal)
-  (let ((cut-beg nil) (cut-end nil)
-        (currentbuffer (current-buffer)))
+  (let ((cut-beg nil) (cut-end nil))
     (with-current-buffer org-buffer
       (when pos
         (goto-char pos))
