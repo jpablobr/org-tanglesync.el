@@ -449,13 +449,6 @@ Uses `org-tanglesync-watch-files` to generate.")
              ;; Otherwise return
              blockpos)))))))
 
-(defun org-tanglesync-watch-sync-tfile-to-conf (tfile confmap)
-  "Sync the TFILE tangle file back to the CONFMAP config file."
-  (let ((cfile (org-tanglesync-get-conf-source tfile confmap)))
-    (if cfile ;; Perform sync
-        (org-tanglesync-watch-perform-sync tfile cfile)
-      (message "Could not find config file for %s." tfile))))
-
 (defun org-tanglesync-watch-perform-sync (tfile cfile content-buffer)
   "Take CONTENT-BUFFER from TFILE and place them into the CFILE config."
   (let ((cbuff (find-file-noselect cfile))
