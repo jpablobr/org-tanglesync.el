@@ -170,15 +170,6 @@ Only takes effect when :custom is set"
   (when (y-or-n-p "Halt execution, and resolve this diff? ")
     (signal 'quit nil)))
 
-(defun org-tanglesync-auto-format-block ()
-  "Format an org src block with the correct indentation, no questions asked.  Assumes org buffer is current."
-  (let ((tmp-suc org-tanglesync-skip-user-check))
-    (setq org-tanglesync-skip-user-check t)
-    ;; current buffer is lost in line below, needs to be restored by parent function.
-    (org-edit-src-code)
-    (org-edit-src-exit)
-    (setq org-tanglesync-skip-user-check tmp-suc)))
-
 (defun org-tanglesync-perform-overwrite (internal external org-buffer &optional pos)
   "Overwrites the current code block INTERNAL with EXTERNAL change in the ORG-BUFFER at optional position POS."
   (ignore internal)
@@ -198,11 +189,7 @@ Only takes effect when :custom is set"
       (delete-region cut-beg cut-end)
       ;; insert the new text
       (goto-char cut-beg)
-      (insert-buffer-substring external)
-      ;; Perform the auto indent without prompt
-      ;; -- this function steals buffer
-      (org-tanglesync-auto-format-block)
-      (switch-to-buffer currentbuffer))
+      (insert-buffer-substring external))
   (message "Block updated from external")))
 
 
