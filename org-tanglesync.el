@@ -83,9 +83,10 @@ Only takes effect when :custom is set"
   "Keymap for function `org-tanglesync-minor-mode'.")
 
 (define-minor-mode org-tanglesync-mode
-  "Mode for syncing tangled org babel headers to their external files."
-  nil
-  " tanglesync"
+  "Mode for syncing tangled org babel headers to their external files.
+
+\\{org-tanglesync-minar-mode-map}l}"
+  :lighter " tsync"
   org-tanglesync-minor-mode-map
   (if org-tanglesync-mode
       (progn
@@ -353,9 +354,7 @@ Only takes effect when :custom is set"
 (define-minor-mode org-tanglesync-watch-mode
   "Allow org-tanglesync to watch other buffers and check to see if they need syncing back
 to the original conf file."
-  nil
-  " o-ts-watch"
-  nil
+  :lighter " o-ts-watch"
   (if org-tanglesync-watch-mode
       (progn (message "Watching buffers")
              (add-hook 'after-save-hook #'org-tanglesync-watch-save nil t))
